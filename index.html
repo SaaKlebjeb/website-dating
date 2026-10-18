@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#fff4ef">
+    <meta name="description" content="A little date invitation, made with love.">
+    <title>A date for us?</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght,SOFT,WONK@9..144,600,30,1;9..144,700,30,1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <div class="ambient-hearts" aria-hidden="true">
+      <span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span>
+    </div>
+    <main class="app-shell">
+      <header class="topbar">
+        <a class="wordmark" href="#" aria-label="A date for us, start over"><span class="wordmark-heart">♥</span> a little date note</a>
+        <span class="topbar-note">made with a crush <span aria-hidden="true">♡</span></span>
+      </header>
+
+      <nav class="main-nav" aria-label="Main menu">
+        <button class="nav-tab is-active" type="button" data-view="invite-view" aria-current="page"><span aria-hidden="true">♡</span> Our date</button>
+        <button class="nav-tab" type="button" data-view="booth-view"><span aria-hidden="true">▧</span> Couple photo booth</button>
+      </nav>
+
+      <section class="invitation" id="invite-view" aria-label="Date invitation">
+        <div class="paper-tape" aria-hidden="true"></div>
+        <div class="flower-sticker" aria-hidden="true">✿</div>
+        <div class="step-meta"><span id="step-label">A LITTLE NOTE</span><span id="step-count">01 / 07</span></div>
+        <div class="progress-track" role="progressbar" aria-label="Invitation progress" aria-valuemin="0" aria-valuemax="7" aria-valuenow="1"><span class="progress-fill"></span></div>
+
+        <div class="flow-step is-active" id="step-intro" data-step="0" aria-labelledby="intro-title">
+          <p class="eyebrow">psst, <span data-name="to">my favorite person</span>...</p>
+          <h1 id="intro-title">I have a little<br><span class="scribble-underline">question</span> for you.</h1>
+          <p class="step-copy">And it comes with absolutely no pressure.<br>Okay, maybe a tiny bit of heart pressure.</p>
+          <div class="intro-doodle" aria-hidden="true"><span>♡</span><span>✳</span><span>♡</span></div>
+          <button class="button button-primary next-button" data-next="1">Open your note <span aria-hidden="true">↗</span></button>
+        </div>
+
+        <div class="flow-step" id="step-love" data-step="1" aria-labelledby="love-title" hidden>
+          <p class="eyebrow">important question no. 1</p>
+          <h2 id="love-title">Do you love me?</h2>
+          <p class="step-copy">Choose wisely, cutie.</p>
+          <div class="answer-area">
+            <button class="button button-primary" id="yes-button">Yes, obviously <span aria-hidden="true">♥</span></button>
+            <button class="button button-secondary runaway-button" id="no-button">No <span aria-hidden="true">↗</span></button>
+          </div>
+          <p class="tiny-note" id="no-note" aria-live="polite">one answer is looking a little shy</p>
+        </div>
+
+        <div class="flow-step" id="step-place" data-step="2" aria-labelledby="place-title" hidden>
+          <p class="eyebrow">important question no. 2</p>
+          <h2 id="place-title">Where should<br>we <span class="highlight-word">wander</span>?</h2>
+          <p class="step-copy">Pick the setting for our little date.</p>
+          <div class="choice-grid" data-choice-group="place" role="group" aria-label="Choose a date setting">
+            <button class="choice-card" data-value="A cozy little cafe"><span class="choice-emoji" aria-hidden="true">☕</span><span class="choice-title">Cozy cafe</span><span class="choice-detail">latte & long chats</span></button>
+            <button class="choice-card" data-value="A picnic in the park"><span class="choice-emoji" aria-hidden="true">🧺</span><span class="choice-title">Park picnic</span><span class="choice-detail">blanket & sunshine</span></button>
+            <button class="choice-card" data-value="A dinner date"><span class="choice-emoji" aria-hidden="true">🍝</span><span class="choice-title">Dinner date</span><span class="choice-detail">something delicious</span></button>
+            <button class="choice-card" data-value="A little adventure"><span class="choice-emoji" aria-hidden="true">🎡</span><span class="choice-title">Little adventure</span><span class="choice-detail">surprise me!</span></button>
+          </div>
+        </div>
+
+        <div class="flow-step" id="step-when" data-step="3" aria-labelledby="when-title" hidden>
+          <p class="eyebrow">important question no. 3</p>
+          <h2 id="when-title">When are you<br><span class="highlight-word">free, love?</span></h2>
+          <p class="step-copy">Pick a day and I’ll make it ours.</p>
+          <div class="datetime-fields">
+            <label class="field-label" for="date-input">THE DAY<input id="date-input" type="date"></label>
+            <label class="field-label" for="time-input">THE TIME<input id="time-input" type="time" value="18:00"></label>
+          </div>
+          <button class="button button-primary next-button" id="date-next">That works for me <span aria-hidden="true">↗</span></button>
+          <p class="field-error" id="date-error" aria-live="polite"></p>
+        </div>
+
+        <div class="flow-step" id="step-food" data-step="4" aria-labelledby="food-title" hidden>
+          <p class="eyebrow">important question no. 4</p>
+          <h2 id="food-title">What sounds<br><span class="highlight-word">yummy?</span></h2>
+          <p class="step-copy">Choose as many as you like.</p>
+          <div class="chip-list" data-chip-group="food" aria-label="Choose foods">
+            <button class="choice-chip" aria-pressed="false">🍕 Pizza</button>
+            <button class="choice-chip" aria-pressed="false">🍣 Sushi</button>
+            <button class="choice-chip" aria-pressed="false">🍝 Pasta</button>
+            <button class="choice-chip" aria-pressed="false">🌮 Tacos</button>
+            <button class="choice-chip" aria-pressed="false">🍰 Something sweet</button>
+            <button class="choice-chip" aria-pressed="false">✨ Surprise me</button>
+          </div>
+          <button class="button button-primary next-button" data-next="5">That sounds delicious <span aria-hidden="true">↗</span></button>
+        </div>
+
+        <div class="flow-step" id="step-photos" data-step="5" aria-labelledby="photos-title" hidden>
+          <p class="eyebrow">one last little detail</p>
+          <h2 id="photos-title">A little <span class="highlight-word">memory</span><br>for the scrapbook?</h2>
+          <p class="step-copy">Add a photo, or pick one of our favorites.</p>
+          <div class="photo-choices" id="photo-choices" aria-label="Choose a photo"></div>
+          <label class="upload-button" for="photo-input"><span aria-hidden="true">＋</span> Add a photo from your camera roll</label>
+          <input class="visually-hidden" id="photo-input" type="file" accept="image/*" multiple>
+          <p class="upload-note" id="upload-note" aria-live="polite">Photos stay on this device.</p>
+          <div class="step-actions">
+            <button class="text-button" id="skip-photos">Skip this part</button>
+            <button class="button button-primary" id="photo-next">Next <span aria-hidden="true">↗</span></button>
+          </div>
+        </div>
+
+        <div class="flow-step" id="step-summary" data-step="6" aria-labelledby="summary-title" hidden>
+          <p class="eyebrow">sealed with a kiss</p>
+          <h2 id="summary-title">It’s a <span class="highlight-word">date!</span></h2>
+          <p class="step-copy">I can’t wait, <span data-name="to">my favorite person</span>.</p>
+          <div class="summary-note" id="summary-note"></div>
+          <div class="summary-photos" id="summary-photos" aria-label="Selected photos"></div>
+          <div class="summary-actions">
+            <button class="button button-primary" id="send-button"><span aria-hidden="true">♡</span> Send the plan</button>
+            <button class="button button-secondary" id="copy-button"><span aria-hidden="true">▢</span> Copy details</button>
+          </div>
+          <p class="copy-status" id="copy-status" aria-live="polite"></p>
+          <button class="text-button start-over" id="restart-button">Start over</button>
+        </div>
+
+        <button class="back-button" id="back-button" aria-label="Go to previous step" hidden>←</button>
+        <span class="edge-sticker" aria-hidden="true">xoxo</span>
+      </section>
+      <section class="booth-view" id="booth-view" aria-labelledby="booth-title" hidden>
+        <div class="booth-heading">
+          <div>
+            <p class="eyebrow">our tiny memory maker</p>
+            <h1 id="booth-title">Couple <span class="highlight-word">photo booth</span></h1>
+            <p class="step-copy">Pick your favorite moments, choose a keepsake style, and make something cute together.</p>
+          </div>
+          <span class="booth-sticker" aria-hidden="true">♡<br><small>together</small></span>
+        </div>
+        <div class="booth-layout">
+          <div class="booth-controls">
+            <section class="booth-section" aria-labelledby="album-title">
+              <div class="section-heading">
+                <div><p class="eyebrow">01 / your pictures</p><h2 id="album-title">Your little album</h2></div>
+                <span class="photo-count" id="booth-photo-count">0 photos</span>
+              </div>
+              <p class="booth-hint">Add up to 24 photos. Tap pictures to include or remove them from your keepsake.</p>
+              <label class="upload-button booth-upload" for="booth-photo-input"><span aria-hidden="true">＋</span> Add photos</label>
+              <input class="visually-hidden" id="booth-photo-input" type="file" accept="image/*" multiple>
+              <p class="upload-note" id="booth-upload-note" aria-live="polite">Photos stay in this browser.</p>
+              <div class="booth-gallery" id="booth-gallery" aria-label="Your photos"></div>
+            </section>
+            <section class="booth-section template-section" aria-labelledby="template-title">
+              <div class="section-heading"><div><p class="eyebrow">02 / the keepsake</p><h2 id="template-title">Pick a template</h2></div></div>
+              <div class="template-options" role="group" aria-label="Photo booth template">
+                <button class="template-option is-selected" type="button" data-template="strip" aria-pressed="true"><span class="template-preview preview-strip" aria-hidden="true"><i></i><i></i><i></i></span><span><strong>Love strip</strong><small>classic booth</small></span></button>
+                <button class="template-option" type="button" data-template="collage" aria-pressed="false"><span class="template-preview preview-collage" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span><strong>Sweet collage</strong><small>playful grid</small></span></button>
+                <button class="template-option" type="button" data-template="postcard" aria-pressed="false"><span class="template-preview preview-postcard" aria-hidden="true"><i></i><i></i></span><span><strong>Love note</strong><small>postcard style</small></span></button>
+                <button class="template-option" type="button" data-template="film" aria-pressed="false"><span class="template-preview preview-film" aria-hidden="true"><i></i><i></i><i></i></span><span><strong>Film roll</strong><small>movie memories</small></span></button>
+                <button class="template-option" type="button" data-template="polaroid" aria-pressed="false"><span class="template-preview preview-polaroid" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span><strong>Polaroid wall</strong><small>instant keepsakes</small></span></button>
+                <button class="template-option" type="button" data-template="heart" aria-pressed="false"><span class="template-preview preview-heart" aria-hidden="true"><i>♥</i><i>♥</i><i>♥</i></span><span><strong>Heart windows</strong><small>all heart eyes</small></span></button>
+                <button class="template-option" type="button" data-template="scrapbook" aria-pressed="false"><span class="template-preview preview-scrapbook" aria-hidden="true"><i></i><i></i><i></i></span><span><strong>Scrapbook page</strong><small>cut, paste, adore</small></span></button>
+                <button class="template-option" type="button" data-template="contact" aria-pressed="false"><span class="template-preview preview-contact" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span><span><strong>Mini moments</strong><small>tiny photo grid</small></span></button>
+                <button class="template-option" type="button" data-template="ticket" aria-pressed="false"><span class="template-preview preview-ticket" aria-hidden="true"><i></i><i></i></span><span><strong>Memory tickets</strong><small>admit two hearts</small></span></button>
+              </div>
+              <label class="caption-field" for="booth-caption">A little caption<input id="booth-caption" type="text" maxlength="36" value="made with love" placeholder="our favorite day"></label>
+              <button class="button button-primary generate-button" id="generate-booth"><span aria-hidden="true">✦</span> Make our keepsake</button>
+              <p class="booth-status" id="booth-status" aria-live="polite"></p>
+            </section>
+          </div>
+          <section class="booth-output" aria-labelledby="keepsake-title">
+            <div class="section-heading output-heading"><div><p class="eyebrow">made by us</p><h2 id="keepsake-title">Our keepsake</h2></div></div>
+            <div class="canvas-stage" id="canvas-stage">
+              <div class="canvas-empty" id="canvas-empty"><span aria-hidden="true">♡</span><strong>Your memories go here</strong><small>Choose photos and make your first keepsake.</small></div>
+              <canvas id="booth-canvas" hidden aria-label="Generated couple photo booth keepsake"></canvas>
+            </div>
+            <div class="output-actions">
+              <button class="button button-primary" id="download-keepsake" disabled><span aria-hidden="true">↓</span> Download keepsake</button>
+              <button class="button button-secondary" id="share-keepsake" disabled><span aria-hidden="true">♡</span> Share</button>
+            </div>
+            <p class="output-note">Made on this device. Your photos are never uploaded.</p>
+          </section>
+        </div>
+      </section>
+      <footer class="page-footer"><span>♡</span> a tiny invitation made just for you <span>♡</span></footer>
+      <div class="celebration-layer" id="celebration-layer" aria-hidden="true"></div>
+      <div class="sr-only" id="announcer" aria-live="polite" aria-atomic="true"></div>
+    </main>
+  </body>
+</html>
